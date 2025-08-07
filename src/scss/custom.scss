@@ -1,0 +1,46 @@
+// Custom SCSS for project-specific overrides and additions
+
+// Make container narrower
+.container {
+  max-width: 1024px;
+}
+
+.main__container {
+  max-width: 1024px;
+}
+
+#global-header {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.global-header-help__list {
+  li.global-header-help__item {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+
+    a.global-header-help__link {
+        
+        &:hover {
+            color: unset;
+            background-color: unset;
+            text-decoration: underline;
+        }
+    }
+
+    &:not(:last-child)::after {
+        content: " ";
+        display: inline-flex;
+        width: 0.75px;
+        height: 12px;
+        background-color: rgba(0, 0, 0, .48);
+        margin-left: 16px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+// Add your custom styles below

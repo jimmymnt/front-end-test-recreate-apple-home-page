@@ -1,0 +1,198 @@
+@use '../base/variables' as *;
+@use 'sass:color';
+// Navigation component styles
+.nav {
+  --segmentbar-height: 40px;
+  // background-color: $background-color;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // height: var(--segmentbar-height);
+  }
+  
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+  
+  &__logo {
+    font-size: $font-size-h3;
+    font-weight: 700;
+    color: $primary-color;
+    text-decoration: none;
+    
+    &:hover {
+      color: color.adjust($primary-color, $lightness: -10%);
+    }
+  }
+  
+  &__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+		li {
+			display: flex;
+			align-items: center;
+		}
+    
+    // Main navigation menu
+    &--main {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    // Icons menu (search, cart)
+    &--icons {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+    }
+  }
+  
+  &__link {
+    font-weight: 500;
+    color: $text-color;
+    text-decoration: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-sm;
+    transition: all $transition-fast;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  
+  // Mobile menu toggle
+  &__toggle {
+    display: none;
+    cursor: pointer;
+    padding: $spacing-sm;
+    background: none;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 1001;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+      color: $text-color;
+      transition: all $transition-fast;
+      
+      polyline {
+        stroke: currentColor;
+        stroke-width: 1.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    }
+  }
+  
+  // Mobile responsive
+  @media (max-width: $breakpoint-md) {
+    &__container {
+      position: relative;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    // Hide main menu on mobile
+    &__menu--main {
+      display: none;
+      
+      // Mobile menu styling when active
+      &.active {
+        li {
+          text-align: left;
+          width: 100%;
+          
+          a {
+            color: #1d1d1f;
+            font-size: 28px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            display: block;
+            width: 100%;
+            transition: color 0.2s ease;
+            
+            &:hover {
+              color: #0071e3;
+            }
+            
+            &.active {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+    
+    // Show hamburger on mobile
+    &__toggle {
+      display: flex;
+    }
+    
+    // Right section (icons and hamburger)
+    &__right {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+    }
+    
+    // Icons menu (always visible on mobile)
+    &__menu--icons {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+    }
+  }
+}
+
+// Breadcrumb navigation
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md 0;
+  
+  &__item {
+    color: $text-light;
+    font-size: $font-size-small;
+    
+    &:not(:last-child)::after {
+      content: '/';
+      margin-left: $spacing-sm;
+      color: $border-color;
+    }
+    
+    &:last-child {
+      color: $text-color;
+      font-weight: 500;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+} 

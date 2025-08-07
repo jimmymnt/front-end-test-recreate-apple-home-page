@@ -1,0 +1,83 @@
+@use 'variables' as *;
+// Typography styles
+.text {
+  &--h1 {
+    font-size: $font-size-h1;
+    font-weight: 700;
+    margin-bottom: $spacing-lg;
+  }
+  
+  &--h2 {
+    font-size: $font-size-h2;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+  }
+  
+  &--h3 {
+    font-size: $font-size-h3;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &--h4 {
+    font-size: $font-size-h4;
+    font-weight: 500;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &--large {
+    font-size: $font-size-large;
+    line-height: 1.4;
+  }
+  
+  &--small {
+    font-size: $font-size-small;
+    line-height: 1.5;
+  }
+  
+  &--light {
+    color: $text-light;
+  }
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--left {
+    text-align: left;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+  
+  &--uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  &--bold {
+    font-weight: 700;
+  }
+  
+  &--medium {
+    font-weight: 500;
+  }
+}
+
+// Responsive typography
+@media (max-width: $breakpoint-md) {
+  .text {
+    &--h1 {
+      font-size: 2rem;
+    }
+    
+    &--h2 {
+      font-size: 1.75rem;
+    }
+    
+    &--h3 {
+      font-size: 1.25rem;
+    }
+  }
+} 

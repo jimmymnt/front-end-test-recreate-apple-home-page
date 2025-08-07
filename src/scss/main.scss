@@ -1,0 +1,17 @@
+// Import all SCSS modules
+@use 'base/variables' as *;
+@use 'base/reset' as *;
+@use 'base/typography' as *;
+@use 'base/utilities' as *;
+@use 'base/animations' as *;
+
+@use 'components/buttons' as *;
+@use 'components/cards' as *;
+@use 'components/navigation' as *;
+
+@use 'layout/header' as *;
+@use 'layout/footer' as *;
+@use 'layout/grid' as *;
+
+@use 'pages/home' as *;
+@use 'custom' as *; 

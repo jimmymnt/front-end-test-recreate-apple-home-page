@@ -1,0 +1,198 @@
+@use '../base/variables' as *;
+@use 'sass:color';
+// Home page specific styles
+.features {
+  padding: $spacing-xxl 0;
+  background-color: $background-dark;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-xxl;
+    
+    h2 {
+      font-size: $font-size-h2;
+      color: $text-color;
+      margin-bottom: $spacing-md;
+    }
+    
+    p {
+      font-size: $font-size-large;
+      color: $text-light;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: $line-height-base;
+    }
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-xl;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+}
+
+// Hero section styles (if not in header)
+.hero-section {
+  background: linear-gradient(135deg, $primary-color 0%, color.adjust($primary-color, $lightness: -15%) 100%);
+  color: white;
+  padding: $spacing-xxl 0;
+  text-align: center;
+  
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+  }
+  
+  &__title {
+    font-size: $font-size-h1;
+    font-weight: 700;
+    margin-bottom: $spacing-lg;
+    line-height: 1.2;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
+  }
+  
+  &__description {
+    font-size: $font-size-large;
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+    line-height: 1.6;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-base;
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+// Content sections
+.section {
+  padding: $spacing-xxl 0;
+  
+  &--light {
+    background-color: $background-color;
+  }
+  
+  &--dark {
+    background-color: $text-color;
+    color: white;
+    
+    h2, h3, h4, h5, h6 {
+      color: white;
+    }
+    
+    p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  &--primary {
+    background-color: $primary-color;
+    color: white;
+    
+    h2, h3, h4, h5, h6 {
+      color: white;
+    }
+    
+    p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-xxl;
+    
+    h2 {
+      font-size: $font-size-h2;
+      margin-bottom: $spacing-md;
+    }
+    
+    p {
+      font-size: $font-size-large;
+      color: $text-light;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: $line-height-base;
+    }
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-xl;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+}
+
+// Call to action section
+.cta {
+  background: linear-gradient(135deg, $primary-color 0%, color.adjust($primary-color, $lightness: -15%) 100%);
+  color: white;
+  padding: $spacing-xxl 0;
+  text-align: center;
+  
+  &__container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+  }
+  
+  &__title {
+    font-size: $font-size-h2;
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__description {
+    font-size: $font-size-large;
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+  }
+  
+  &__actions {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+} 
