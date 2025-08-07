@@ -12,7 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // height: var(--segmentbar-height);
+    height: calc(var(--segmentbar-height) + 4px);
+		box-sizing: border-box;
   }
   
   &__right {
@@ -42,19 +43,24 @@
 		li {
 			display: flex;
 			align-items: center;
+			height: 44px;
+			box-sizing: border-box;
 		}
     
     // Main navigation menu
     &--main {
       width: 100%;
       justify-content: space-between;
+			height: 44px;
+			box-sizing: border-box;
     }
     
     // Icons menu (search, cart)
     &--icons {
       display: flex;
       align-items: center;
-      gap: $spacing-md;
+      gap: 24px;
+			margin-left: 24px;
     }
   }
   
@@ -62,7 +68,7 @@
     font-weight: 500;
     color: $text-color;
     text-decoration: none;
-    padding: $spacing-sm $spacing-md;
+    // padding: $spacing-sm $spacing-md;
     border-radius: $border-radius-sm;
     transition: all $transition-fast;
     position: relative;
@@ -117,6 +123,11 @@
       
       // Mobile menu styling when active
       &.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        
         li {
           text-align: left;
           width: 100%;

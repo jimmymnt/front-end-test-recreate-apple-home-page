@@ -2,6 +2,7 @@
 @use 'sass:color';
 // Header layout styles
 .header {
+  --segmentbar-height: 40px;
   --globalnav-background: rgba(255, 255, 255, .8);
   --globalnav-backdrop-filter: saturate(180%) blur(20px);
   --globalnav-background: rgba(250, 250, 252, .8);
