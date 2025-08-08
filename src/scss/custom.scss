@@ -142,22 +142,10 @@ body {
 
   .homepage-section {
     margin: 0 auto;
-
-    &.collection-module {
-      // Background image styles (commented out until image is available)
-      // width: 3008px;
-      // height: 692px;
-      // background-size: 3008px 692px;
-      // background-repeat: no-repeat;
-      // background-image: url('../images/homepage-section-collection-module.png');
-    }
+    margin-bottom: 17px;
   }
 
-  // =============================================================================
-  // MACBOOK AIR PROMOTIONAL SECTION
-  // =============================================================================
-
-  [data-module-id="macbook-air"] {
+  [data-module-theme="promo"] {
     height: $macbook-section-height;
     @include flex-center;
     position: relative;
@@ -170,51 +158,462 @@ body {
       position: relative;
       z-index: 2;
       height: 100%;
+
+      .module-wrapper {
+        @include flex-column-center;
+        justify-content: space-between;
+        z-index: 2;
+        height: 100%;
+
+        .module-info-wrapper {
+          height: 100%;
+          @include flex-column-center;
+          justify-content: space-between;
+          z-index: 2;
+          padding: 55px 0 55px;
+
+          .wrapper-top {
+
+            // Typography
+            .unit-title {
+              font-size: $macbook-title-size;
+              font-weight: 600;
+              line-height: 1.07143;
+              color: $text-dark;
+              letter-spacing: -0.005em;
+              margin: 0;
+            }
+
+            .sub-headline {
+              font-size: 28px;
+              line-height: 1.14286;
+              font-weight: 400;
+              letter-spacing: .007em;
+              margin-top: 6px;
+              color: #1d1d1f;
+            }
+
+            // Call-to-action buttons
+            .cta-links {
+              display: flex;
+              gap: 1rem;
+              justify-content: center;
+              margin: 2rem 0;
+
+              .button {
+                @include button-base;
+
+                &.button-primary {
+                  background: $primary-blue;
+                  color: $white;
+                  border: none;
+
+                  &:hover {
+                    background: $primary-blue-hover;
+                  }
+                }
+
+                &.button-tertiary {
+                  background: transparent;
+                  color: $primary-blue;
+                  border: 1px solid $primary-blue;
+
+                  &:hover {
+                    background: $primary-blue;
+                    color: $white;
+                  }
+                }
+              }
+            }
+          }
+
+          // Bottom section
+          .wrapper-bottom {
+            margin-top: 2rem;
+
+            .subhead {
+              font-size: 1.25rem;
+              margin: 0;
+              font-weight: 500;
+
+              .ai-gradient {
+                @include gradient-text(linear-gradient(94deg, #0090F7, #BA62FC, #F2416B, #F55600));
+                font-size: $macbook-gradient-text-size;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        .module-image-wrapper {
+          position: relative;
+          margin-top: 3rem;
+
+          &.module-image-setup {
+            z-index: 1;
+            position: absolute;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            left: calc(50% + 0px);
+            right: auto;
+            bottom: 0px;
+            top: auto;
+            transform: translateX(-50%);
+
+            figure {
+              margin: 0 auto;
+              position: relative;
+              width: 3008px;
+              height: 692px;
+              background-size: 3008px 692px;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+    }
+    @include responsive(768px) {
+      height: 500px !important;
+
+      .unit-title {
+        font-size: 2.5rem !important;
+      }
+
+      .sub-headline {
+        font-size: 19px !important;
+        line-height: 1.21053 !important;
+        font-weight: 400 !important;
+        letter-spacing: .012em !important;
+        color: #1d1d1f !important;
+      }
+
+      .wrapper-bottom {
+        // margin-top: 0;
+
+        .subhead {
+          .ai-gradient {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .cta-links {
+        flex-direction: row !important;
+        align-items: center !important;
+        margin: 1.5rem 0 !important;
+
+        .button {
+          font-size: 14px !important;
+          padding: 6px 16px !important;
+        }
+      }
+
+      .module-info-wrapper {
+        padding: 45px 0 25px !important;
+      }
+
+      .module-image-wrapper {
+        figure {
+          width: 734px !important;
+          height: 500px !important;
+          background-size: 734px 500px !important;
+          background-repeat: no-repeat !important;
+        }
+      }
+    }
+  }
+
+  // =============================================================================
+  // PROMOTIONAL SECTIONS (MACBOOK AIR & IPHONE)
+  // =============================================================================
+
+  // [data-module-id="macbook-air"],
+  // [data-module-id="iphone"] {
+  //   height: $macbook-section-height;
+  //   @include flex-center;
+  //   position: relative;
+  //   overflow: hidden;
+
+  //   .module-content {
+  //     max-width: 1200px;
+  //     width: 100%;
+  //     text-align: center;
+  //     position: relative;
+  //     z-index: 2;
+  //     height: 100%;
+  //   }
+
+  //   .module-wrapper {
+  //     @include flex-column-center;
+  //     justify-content: space-between;
+  //     z-index: 2;
+  //     height: 100%;
+  //   }
+
+  //   .module-info-wrapper {
+  //     height: 100%;
+  //     @include flex-column-center;
+  //     justify-content: space-between;
+  //     z-index: 2;
+  //     padding: 55px 0 55px;
+  //   }
+
+  //   // Typography
+  //   .unit-title {
+  //     font-size: $macbook-title-size;
+  //     font-weight: 600;
+  //     line-height: 1.07143;
+  //     color: $text-dark;
+  //     letter-spacing: -0.005em;
+  //     margin: 0;
+  //   }
+
+  //   .sub-headline {
+  //     font-size: 28px;
+  //     line-height: 1.14286;
+  //     font-weight: 400;
+  //     letter-spacing: .007em;
+  //     margin-top: 6px;
+  //     color: #1d1d1f;
+  //   }
+
+  //   // Call-to-action buttons
+  //   .cta-links {
+  //     display: flex;
+  //     gap: 1rem;
+  //     justify-content: center;
+  //     margin: 2rem 0;
+  //   }
+
+  //   .button {
+  //     @include button-base;
+
+  //     &.button-primary {
+  //       background: $primary-blue;
+  //       color: $white;
+  //       border: none;
+
+  //       &:hover {
+  //         background: $primary-blue-hover;
+  //       }
+  //     }
+
+  //     &.button-tertiary {
+  //       background: transparent;
+  //       color: $primary-blue;
+  //       border: 1px solid $primary-blue;
+
+  //       &:hover {
+  //         background: $primary-blue;
+  //         color: $white;
+  //       }
+  //     }
+  //   }
+
+  //   // Bottom section
+  //   .wrapper-bottom {
+  //     margin-top: 2rem;
+  //   }
+
+  //   .subhead {
+  //     font-size: 1.25rem;
+  //     margin: 0;
+  //     font-weight: 500;
+  //   }
+
+  //   .ai-gradient {
+  //     @include gradient-text(linear-gradient(94deg, #0090F7, #BA62FC, #F2416B, #F55600));
+  //     font-size: $macbook-gradient-text-size;
+  //     font-weight: 500;
+  //   }
+
+  //   // Image section
+  //   .module-image-wrapper {
+  //     position: relative;
+  //     margin-top: 3rem;
+  //   }
+
+  //   .module-image-setup {
+  //     z-index: 1;
+  //     position: absolute;
+  //     border: 0;
+  //     margin: 0;
+  //     padding: 0;
+  //     left: calc(50% + 0px);
+  //     right: auto;
+  //     bottom: 0px;
+  //     top: auto;
+  //     transform: translateX(-50%);
+  //   }
+
+  //   .module-image-wrapper figure {
+  //     margin: 0 auto;
+  //     position: relative;
+  //     width: 3008px;
+  //     height: 692px;
+  //     background-size: 3008px 692px;
+  //     background-repeat: no-repeat;
+  //   }
+
+    // =============================================================================
+    // RESPONSIVE DESIGN
+    // =============================================================================
+
+    // @include responsive(768px) {
+    //   height: 500px !important;
+
+    //   .unit-title {
+    //     font-size: 2.5rem;
+    //   }
+
+    //   .sub-headline {
+    //     font-size: 19px;
+    //     line-height: 1.21053;
+    //     font-weight: 400;
+    //     letter-spacing: .012em;
+    //     color: #1d1d1f;
+    //   }
+
+    //   .wrapper-bottom {
+    //     // margin-top: 0;
+
+    //     .subhead {
+    //       .ai-gradient {
+    //         font-size: 14px;
+    //       }
+    //     }
+    //   }
+
+    //   .cta-links {
+    //     flex-direction: row;
+    //     align-items: center;
+
+    //     .button {
+    //       font-size: 14px;
+    //       padding: 6px 16px;
+    //     }
+    //   }
+
+    //   .module-info-wrapper {
+    //     padding: 45px 0 25px;
+    //   }
+
+    //   .module-image-wrapper {
+    //     figure {
+    //       width: 734px;
+    //       height: 500px;
+    //       background-size: 734px 500px;
+    //       background-repeat: no-repeat;
+    //     }
+    //   }
+    // }
+  // }
+
+  // =============================================================================
+  // MACBOOK AIR SPECIFIC BACKGROUND IMAGES
+  // =============================================================================
+
+  [data-module-theme="promo"] {
+    .module-image-wrapper figure {
+      background-image: url('../images/hero_macbook_air_avail__fpm99qgohx2e_largetall_2x.jpg');
     }
 
-    .module-wrapper {
-      @include flex-column-center;
-      justify-content: space-between;
-      z-index: 2;
-      height: 100%;
+    @include responsive(768px) {
+      .module-image-wrapper figure {
+        background-image: url('../images/hero_macbook_air_avail__fpm99qgohx2e_small_2x.jpg');
+      }
+    }
+  }
+
+  // =============================================================================
+  // IPHONE SPECIFIC BACKGROUND IMAGES
+  // =============================================================================
+
+  [data-module-id="iphone"] {
+    .module-image-wrapper figure {
+      background-image: url('../images/hero_iphone_family__fuz5j2v5xx6y_largetall_2x.jpg');
     }
 
     .module-info-wrapper {
-      height: 100%;
-      @include flex-column-center;
-      justify-content: space-between;
-      z-index: 2;
-      padding: 55px 0 55px;
+      justify-content: unset !important;
+
+      .wrapper-bottom {
+        margin-top: 0 !important;
+      }
     }
 
-    // Typography
-    .unit-title {
-      font-size: $macbook-title-size;
-      font-weight: 700;
-      line-height: 1.07143;
+    @include responsive(768px) {
+      .module-image-wrapper figure {
+        background-image: url('../images/hero_iphone_family__fuz5j2v5xx6y_small_2x.jpg');
+      }
+    }
+  }
+
+  // =============================================================================
+  // 4-ITEM SHOWCASE GRID
+  // =============================================================================
+
+  [data-module-id="4-item-showcase"] {
+    .module-content {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 17px;
+      width: 100%;
+    }
+
+    .showcase-item {
+      background-color: #fbfbfd;
+      border-radius: 18px;
+      padding: 40px 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .showcase-content {
+      @include flex-column-center;
+      gap: 12px;
+    }
+
+    .showcase-title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.16667;
       color: $text-dark;
-      letter-spacing: -0.005em;
       margin: 0;
     }
 
-    .sub-headline {
-      font-size: $macbook-subtitle-size;
-      line-height: 1.14286;
+    .showcase-description {
+      font-size: 17px;
+      line-height: 1.23536;
       font-weight: 400;
-      letter-spacing: 0.007em;
-      margin-top: 6px;
+      color: $text-dark;
+      margin: 0;
+      opacity: 0.8;
     }
 
-    // Call-to-action buttons
-    .cta-links {
+    .showcase-links {
       display: flex;
-      gap: 1rem;
+      gap: 12px;
       justify-content: center;
-      margin: 2rem 0;
+      margin-top: 8px;
     }
 
     .button {
       @include button-base;
+      font-size: 14px;
+      padding: 8px 16px;
 
       &.button-primary {
         background: $primary-blue;
@@ -238,100 +637,39 @@ body {
       }
     }
 
-    // Bottom section
-    .wrapper-bottom {
-      margin-top: 2rem;
-    }
-
-    .subhead {
-      font-size: 1.25rem;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    .ai-gradient {
-      @include gradient-text(linear-gradient(94deg, #0090F7, #BA62FC, #F2416B, #F55600));
-      font-size: $macbook-gradient-text-size;
-      font-weight: 500;
-    }
-
-    // Image section
-    .module-image-wrapper {
-      position: relative;
-      margin-top: 3rem;
-    }
-
-    .module-image-setup {
-      z-index: 1;
-      position: absolute;
-      border: 0;
-      margin: 0;
-      padding: 0;
-      left: calc(50% + 0px);
-      right: auto;
-      bottom: 0px;
-      top: auto;
-      transform: translateX(-50%);
-    }
-
-    .module-image-wrapper figure {
-      margin: 0 auto;
-      position: relative;
-      background-image: url('../images/hero_macbook_air_avail__fpm99qgohx2e_largetall_2x.jpg');
-      width: 3008px;
-      height: 692px;
-      background-size: 3008px 692px;
-      background-repeat: no-repeat;
-    }
-
     // =============================================================================
     // RESPONSIVE DESIGN
     // =============================================================================
 
     @include responsive(768px) {
-      height: 500px;
-
-      .unit-title {
-        font-size: 2.5rem;
+      .module-content {
+        padding: 0;
       }
 
-      .sub-headline {
-        font-size: 19px;
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        width: 100%;
       }
 
-      .wrapper-bottom {
-        // margin-top: 0;
-
-        .subhead {
-          .ai-gradient {
-            font-size: 14px;
-          }
-        }
+      .showcase-item {
+        padding: 30px 20px;
+        width: 100%;
+        min-width: 100%;
       }
 
-      .cta-links {
-        flex-direction: row;
+      .showcase-title {
+        font-size: 21px;
+      }
+
+      .showcase-description {
+        font-size: 15px;
+      }
+
+      .showcase-links {
+        gap: 8px;
+        display: flex;
         align-items: center;
-
-        .button {
-          font-size: 14px;
-          padding: 6px 16px;
-        }
-      }
-
-      .module-info-wrapper {
-        padding: 45px 0 25px;
-      }
-
-      .module-image-wrapper {
-        figure {
-          // Responsive image sizing can be added here
-          background-image: url('../images/hero_macbook_air_avail__fpm99qgohx2e_small_2x.jpg');
-          width: 734px;
-          height: 500px;
-          background-size: 734px 500px;
-          background-repeat: no-repeat;
-        }
       }
     }
   }
