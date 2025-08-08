@@ -114,7 +114,6 @@ export function initNavigation() {
       zIndex: '10000',
       padding: '0.5rem',
       borderRadius: '50%',
-      transition: 'background-color 0.2s ease'
     });
 
     // Hover effects

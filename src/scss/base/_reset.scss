@@ -32,7 +32,6 @@ img {
 a {
   text-decoration: none;
   color: inherit;
-  transition: color $transition-fast;
   
   &:hover {
     color: $primary-color;

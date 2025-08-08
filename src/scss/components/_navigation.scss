@@ -140,7 +140,6 @@
             padding: 0.5rem 0;
             display: block;
             width: 100%;
-            transition: color 0.2s ease;
             
             &:hover {
               color: #0071e3;
@@ -170,7 +169,8 @@
     &__menu--icons {
       display: flex;
       align-items: center;
-      gap: $spacing-sm;
+      gap: 30px;
+      margin-right: 23px;
     }
   }
 }

@@ -166,7 +166,6 @@
 // Main content area
 .main {
   min-height: calc(100vh - 70px - 200px); // Adjust based on header and footer heights
-  padding: $spacing-xl 0;
   
   &__container {
     max-width: 1200px;

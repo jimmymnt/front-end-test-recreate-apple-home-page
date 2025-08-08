@@ -1,66 +1,338 @@
-// Custom SCSS for project-specific overrides and additions
+// =============================================================================
+// CUSTOM SCSS - Project-specific overrides and additions
+// =============================================================================
 
-// Make container narrower
-.container {
-  max-width: 1024px;
+// Variables
+$container-max-width: 1024px;
+$segmentbar-height: 40px;
+$segmentbar-height-mobile: 40px;
+$header-bg-color: rgb(250, 250, 252);
+$header-overlay-color: rgba(0, 0, 0, 0.04);
+$divider-color: rgba(0, 0, 0, 0.48);
+
+// MacBook Air section variables
+$macbook-section-height: 692px;
+$macbook-title-size: 56px;
+$macbook-subtitle-size: 28px;
+$macbook-button-size: 17px;
+$macbook-gradient-text-size: 19px;
+
+// Colors
+$primary-blue: #06C;
+$primary-blue-hover: #0056CC;
+$text-dark: #1d1d1f;
+$white: #ffffff;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.main__container {
-  max-width: 1024px;
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+@mixin button-base {
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.47059;
+  letter-spacing: 0.007em;
+  font-size: $macbook-button-size;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 980px;
+}
 
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
 
-#global-header {
-  --segmentbar-height: 40px;
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
-  background-color: rgb(250, 250, 252);
-  height: var(--segmentbar-height);
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .04);
-    z-index: 1;
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
   }
 }
 
-.global-header-help__list {
-  li.global-header-help__item {
-    display: flex;
-    align-items: center;
-    margin-right: 16px;
-    z-index: 2;
+// =============================================================================
+// LAYOUT COMPONENTS
+// =============================================================================
 
-    a.global-header-help__link {
-        
-        &:hover {
-            color: unset;
-            background-color: unset;
-            text-decoration: underline;
-        }
+// Container styles
+.container,
+.main__container {
+  max-width: $container-max-width;
+}
+
+// =============================================================================
+// GLOBAL HEADER
+// =============================================================================
+
+body {
+  --segmentbar-height: #{$segmentbar-height};
+  --segmentbar-height-mobile: #{$segmentbar-height-mobile};
+
+  #global-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.7rem 0;
+    background-color: $header-bg-color;
+    height: var(--segmentbar-height);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $header-overlay-color;
+      z-index: 1;
     }
+  }
 
-    &:not(:last-child)::after {
+  // Header navigation list
+  .global-header-help__list {
+    li.global-header-help__item {
+      @include flex-center;
+      margin-right: 16px;
+      z-index: 2;
+
+      a.global-header-help__link {
+        &:hover {
+          color: unset;
+          background-color: unset;
+          text-decoration: underline;
+        }
+      }
+
+      &:not(:last-child)::after {
         content: " ";
         display: inline-flex;
         width: 0.75px;
         height: 12px;
-        background-color: rgba(0, 0, 0, .48);
+        background-color: $divider-color;
         margin-left: 16px;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  // Main content spacing
+  main.main {
+    margin-top: calc(var(--segmentbar-height) + 40px);
+  }
+
+  // =============================================================================
+  // HOMEPAGE SECTIONS
+  // =============================================================================
+
+  .homepage-section {
+    margin: 0 auto;
+
+    &.collection-module {
+      // Background image styles (commented out until image is available)
+      // width: 3008px;
+      // height: 692px;
+      // background-size: 3008px 692px;
+      // background-repeat: no-repeat;
+      // background-image: url('../images/homepage-section-collection-module.png');
+    }
+  }
+
+  // =============================================================================
+  // MACBOOK AIR PROMOTIONAL SECTION
+  // =============================================================================
+
+  [data-module-id="macbook-air"] {
+    height: $macbook-section-height;
+    @include flex-center;
+    position: relative;
+    overflow: hidden;
+
+    .module-content {
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      height: 100%;
     }
 
-    &:last-child {
-      margin-right: 0;
+    .module-wrapper {
+      @include flex-column-center;
+      justify-content: space-between;
+      z-index: 2;
+      height: 100%;
+    }
+
+    .module-info-wrapper {
+      height: 100%;
+      @include flex-column-center;
+      justify-content: space-between;
+      z-index: 2;
+      padding: 55px 0 55px;
+    }
+
+    // Typography
+    .unit-title {
+      font-size: $macbook-title-size;
+      font-weight: 700;
+      line-height: 1.07143;
+      color: $text-dark;
+      letter-spacing: -0.005em;
+      margin: 0;
+    }
+
+    .sub-headline {
+      font-size: $macbook-subtitle-size;
+      line-height: 1.14286;
+      font-weight: 400;
+      letter-spacing: 0.007em;
+      margin-top: 6px;
+    }
+
+    // Call-to-action buttons
+    .cta-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .button {
+      @include button-base;
+
+      &.button-primary {
+        background: $primary-blue;
+        color: $white;
+        border: none;
+
+        &:hover {
+          background: $primary-blue-hover;
+        }
+      }
+
+      &.button-tertiary {
+        background: transparent;
+        color: $primary-blue;
+        border: 1px solid $primary-blue;
+
+        &:hover {
+          background: $primary-blue;
+          color: $white;
+        }
+      }
+    }
+
+    // Bottom section
+    .wrapper-bottom {
+      margin-top: 2rem;
+    }
+
+    .subhead {
+      font-size: 1.25rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .ai-gradient {
+      @include gradient-text(linear-gradient(94deg, #0090F7, #BA62FC, #F2416B, #F55600));
+      font-size: $macbook-gradient-text-size;
+      font-weight: 500;
+    }
+
+    // Image section
+    .module-image-wrapper {
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .module-image-setup {
+      z-index: 1;
+      position: absolute;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      left: calc(50% + 0px);
+      right: auto;
+      bottom: 0px;
+      top: auto;
+      transform: translateX(-50%);
+    }
+
+    .module-image-wrapper figure {
+      margin: 0 auto;
+      position: relative;
+      background-image: url('../images/hero_macbook_air_avail__fpm99qgohx2e_largetall_2x.jpg');
+      width: 3008px;
+      height: 692px;
+      background-size: 3008px 692px;
+      background-repeat: no-repeat;
+    }
+
+    // =============================================================================
+    // RESPONSIVE DESIGN
+    // =============================================================================
+
+    @include responsive(768px) {
+      height: 500px;
+
+      .unit-title {
+        font-size: 2.5rem;
+      }
+
+      .sub-headline {
+        font-size: 19px;
+      }
+
+      .wrapper-bottom {
+        // margin-top: 0;
+
+        .subhead {
+          .ai-gradient {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .cta-links {
+        flex-direction: row;
+        align-items: center;
+
+        .button {
+          font-size: 14px;
+          padding: 6px 16px;
+        }
+      }
+
+      .module-info-wrapper {
+        padding: 45px 0 25px;
+      }
+
+      .module-image-wrapper {
+        figure {
+          // Responsive image sizing can be added here
+          background-image: url('../images/hero_macbook_air_avail__fpm99qgohx2e_small_2x.jpg');
+          width: 734px;
+          height: 500px;
+          background-size: 734px 500px;
+          background-repeat: no-repeat;
+        }
+      }
     }
   }
 }
-// Add your custom styles below
