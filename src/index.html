@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <header class="header">
+    <header class="header" id="main-header">
         <nav class="nav">
             <div class="nav__container container">
                 <!-- Apple logo (always visible on left) -->
@@ -59,22 +59,156 @@
                     <!-- Search and Cart icons (always visible) -->
                     <ul class="nav__menu nav__menu--icons">
                         <li id="search-icon">
-                            <a href="#" class="nav__link">
+                            <a href="#" class="nav__link" id="search-toggle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="44px" viewBox="0 0 15 44">
                                     <path
                                         d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z">
                                     </path>
                                 </svg>
                             </a>
+                            <!-- Search Menu -->
+                            <div class="search-menu" id="searchMenu">
+                                <div class="search-menu__content container">
+                                    <button class="search-menu__close" id="searchClose">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 6.586L13.657.929a1 1 0 1 1 1.414 1.414L9.414 8l5.657 5.657a1 1 0 0 1-1.414 1.414L8 9.414l-5.657 5.657a1 1 0 0 1-1.414-1.414L6.586 8 .929 2.343A1 1 0 0 1 2.343.929L8 6.586z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="search-menu__search-area">
+                                        <div class="search-icon-large" >
+                                            <svg style="width: 50px; height: 50px;" xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 44 44">
+                                                <path
+                                                    d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="search-text">
+                                            <input type="text" placeholder="Search apple.com" class="search-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="search-menu__quick-links">
+                                        <p>Quick Links</p>
+                                        <ul class="quick-links-list">
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Find a Store</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Apple Vision Pro</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>AirPods</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Apple Intelligence</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Apple Trade In</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li id="cart-icon">
-                            <a href="#" class="nav__link">
+                            <a href="#" class="nav__link" id="cart-toggle">
                                 <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="m11.3535 16.0283h-1.0205a3.4229 3.4229 0 0 0 -3.333-2.9648 3.4229 3.4229 0 0 0 -3.333 2.9648h-1.02a2.1184 2.1184 0 0 0 -2.117 2.1162v7.7155a2.1186 2.1186 0 0 0 2.1162 2.1167h8.707a2.1186 2.1186 0 0 0 2.1168-2.1167v-7.7155a2.1184 2.1184 0 0 0 -2.1165-2.1162zm-4.3535-1.8652a2.3169 2.3169 0 0 1 2.2222 1.8652h-4.4444a2.3169 2.3169 0 0 1 2.2222-1.8652zm5.37 11.6969a1.0182 1.0182 0 0 1 -1.0166 1.0171h-8.7069a1.0182 1.0182 0 0 1 -1.0165-1.0171v-7.7155a1.0178 1.0178 0 0 1 1.0166-1.0166h8.707a1.0178 1.0178 0 0 1 1.0164 1.0166z">
                                     </path>
                                 </svg>
                             </a>
+                            <!-- Cart Menu -->
+                            <div class="cart-menu" id="cartMenu">
+                                <div class="cart-menu__content container">
+                                    <button class="cart-menu__close" id="cartClose">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 6.586L13.657.929a1 1 0 1 1 1.414 1.414L9.414 8l5.657 5.657a1 1 0 0 1-1.414 1.414L8 9.414l-5.657 5.657a1 1 0 0 1-1.414-1.414L6.586 8 .929 2.343A1 1 0 0 1 2.343.929L8 6.586z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="cart-menu__header">
+                                        <div class="cart-text">
+                                            <h3>Your bag is empty</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart-menu__actions">
+                                        <p>
+                                            <a href="javascript:void(0)" style="color: #0071e3; text-decoration: underline;">Sign in</a> to see if you have any saved items.
+                                        </p>
+
+                                        <p style="margin-top: 20px;">My Profile</p>
+                                        <ul class="cart-actions-list">
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Favorites</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Orders</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Account</span>
+                                            </li>
+                                            <li>
+                                                <svg height="16" viewBox="0 0 9 16" width="9"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z">
+                                                    </path>
+                                                </svg>
+                                                <span>Sign in</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
 
@@ -357,8 +491,7 @@
                 <div class="multi-carousel-inner" id="carouselInner">
                     <div class="multi-carousel-item">
                         <div class="img-container">
-                            <img
-                                src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/09/88/6f/09886f5a-ee49-d418-661f-a0d63d57a2ac/e0351afd-8bac-40a4-a130-3059e659220e.png/2500x1406.jpg"
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/09/88/6f/09886f5a-ee49-d418-661f-a0d63d57a2ac/e0351afd-8bac-40a4-a130-3059e659220e.png/2500x1406.jpg"
                                 alt="Image 1">
                             <div class="progress-bar-container">
                                 <div class="progress-bar-fill"></div>
@@ -367,8 +500,7 @@
                     </div>
                     <div class="multi-carousel-item">
                         <div class="img-container">
-                            <img
-                                src="https://is1-ssl.mzstatic.com/image/thumb/TFanRtmu0kIbEWBogwhNgA/2500x1406.jpg"
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/TFanRtmu0kIbEWBogwhNgA/2500x1406.jpg"
                                 alt="Image 2">
                             <div class="progress-bar-container">
                                 <div class="progress-bar-fill"></div>
@@ -377,8 +509,7 @@
                     </div>
                     <div class="multi-carousel-item">
                         <div class="img-container">
-                            <img
-                                src="https://is1-ssl.mzstatic.com/image/thumb/Axf6fFibiK2puSTzKXvgpA/2500x1406.jpg"
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/Axf6fFibiK2puSTzKXvgpA/2500x1406.jpg"
                                 alt="Image 3">
                             <div class="progress-bar-container">
                                 <div class="progress-bar-fill"></div>
