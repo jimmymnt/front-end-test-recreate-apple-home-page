@@ -21,7 +21,7 @@ export function initMultiCarousel() {
         }
         let centerWidthPercent;
         if (containerWidth <= maxCenterWidth) {
-            centerWidthPercent = 75;
+            centerWidthPercent = 80;
         } else {
             centerWidthPercent = (maxCenterWidth / containerWidth) * 100;
         }

@@ -3,6 +3,7 @@ export function initNavigation() {
   const navToggle = document.querySelector('.nav__toggle');
   const navMenu = document.querySelector('.nav__menu--main');
   const navLinks = document.querySelectorAll('.nav__menu--main .nav__link');
+  const header = document.getElementById('main-header');
 
   if (navToggle && navMenu) {
     // Mobile menu toggle
@@ -142,5 +143,111 @@ export function initNavigation() {
     if (closeButton) {
       closeButton.remove();
     }
+  }
+
+  // =============================================================================
+  // SEARCH MENU FUNCTIONALITY
+  // =============================================================================
+  
+  const searchToggle = document.getElementById('search-toggle');
+  const searchMenu = document.getElementById('searchMenu');
+  const searchClose = document.getElementById('searchClose');
+
+  if (searchToggle && searchMenu && searchClose) {
+    // Open search menu
+    searchToggle.addEventListener('click', (e) => {
+      console.log('searchToggle clicked');
+      e.preventDefault();
+      openSearchMenu();
+    });
+
+    // Close search menu
+    searchClose.addEventListener('click', () => {
+      closeSearchMenu();
+    });
+
+    // Close search menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchMenu.contains(e.target) && !searchToggle.contains(e.target)) {
+        closeSearchMenu();
+      }
+    });
+
+    // Close search menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSearchMenu();
+      }
+    });
+  }
+
+  // Helper function to open search menu
+  function openSearchMenu() {
+    searchMenu.classList.add('active');
+    // Focus on search input when menu opens
+    const searchInput = searchMenu.querySelector('.search-input');
+    if (searchInput) {
+      setTimeout(() => searchInput.focus(), 100);
+      // Remove the specific style for main menu
+      header.style.backgroundColor = '#fff';
+    }
+  }
+
+  // Helper function to close search menu
+  function closeSearchMenu() {
+    searchMenu.classList.remove('active');
+
+    // Remove the specific style for main menu
+    header.style.backgroundColor = 'var(--globalnav-background)';
+  }
+
+  // =============================================================================
+  // CART MENU FUNCTIONALITY
+  // =============================================================================
+  
+  const cartToggle = document.getElementById('cart-toggle');
+  const cartMenu = document.getElementById('cartMenu');
+  const cartClose = document.getElementById('cartClose');
+
+  if (cartToggle && cartMenu && cartClose) {
+    // Open cart menu
+    cartToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCartMenu();
+    });
+
+    // Close cart menu
+    cartClose.addEventListener('click', () => {
+      closeCartMenu();
+    });
+
+    // Close cart menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!cartMenu.contains(e.target) && !cartToggle.contains(e.target)) {
+        closeCartMenu();
+      }
+    });
+
+    // Close cart menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCartMenu();
+      }
+    });
+  }
+
+  // Helper function to open cart menu
+  function openCartMenu() {
+    cartMenu.classList.add('active');
+    // Remove the specific style for main menu
+    header.style.backgroundColor = '#fff';
+  }
+
+  // Helper function to close cart menu
+  function closeCartMenu() {
+    cartMenu.classList.remove('active');
+
+    // Remove the specific style for main menu
+    header.style.backgroundColor = 'var(--globalnav-background)';
   }
 } 
