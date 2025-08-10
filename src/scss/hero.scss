@@ -1,0 +1,191 @@
+[data-module-id="hero"] {
+	.module-content {
+		width: 100%;
+		max-width: unset !important;
+
+		.module-wrapper {
+			.module-image {
+				background-image: url('../images/homepage-section-collection-module.png');
+			}
+		}
+
+		.imessage-wrapper {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			text-align: left;
+			position: absolute;
+			padding-top: 60px;
+		}
+
+		.imessage {
+			font-size: 48px;
+			line-height: 1.08349;
+			font-weight: 600;
+			letter-spacing: -.002em;
+			fill: #007aff;
+			position: relative;
+			margin: 0;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			letter-spacing: 0;
+			z-index: 6;
+
+			&.imessage-1 {
+				width: 299px;
+
+				figure {
+					position: absolute;
+					background-size: 149px 108px;
+					background-repeat: no-repeat;
+					border: 0;
+					margin: 0;
+					padding: 0;
+
+					&.icon-1 {
+						width: 149px;
+						height: 108px;
+						top: -27px;
+						right: -80px;
+						z-index: 3;
+						background-image: url('../images/hero_sticker_mba__b0ht7774wpaq_largetall_2x.png');
+					}
+
+					&.icon-2 {
+						width: 83px;
+						height: 102px;
+						top: 63px;
+						right: -42px;
+						z-index: 2;
+						background-size: 83px 102px;
+						background-repeat: no-repeat;
+						background-image: url('../images/hero_sticker_ipadair__bk6ffplndvte_largetall_2x.png');
+					}
+				}
+			}
+
+			&.imessage-2 {
+				width: 308px;
+				left: 4px;
+				top: 4px;
+			}
+
+			&.imessage-3 {
+				width: 314px;
+				left: 7px;
+				top: 25px;
+
+				figure {
+					position: absolute;
+					top: -16px;
+					left: -22px;
+					width: 52px;
+					height: 52px;
+					background-size: 52px 52px;
+					background-repeat: no-repeat;
+					background-image: url('../images/hero_sticker_genmoji__dixanrcsc2gm_largetall_2x.png');
+				}
+			}
+
+			.imessage-copy {
+				font-size: 96px;
+				color: white;
+				padding: 10px;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				line-height: 1.03em;
+
+				&.imessage-copy-2 {
+					font-size: 49px;
+				}
+
+				&.imessage-copy-3 {
+					max-width: 80%;
+					font-size: 95px;
+				}
+			}
+		}
+
+		@media (max-width: 768px) {
+			.imessage-wrapper {
+				.imessage-1 {
+					width: 204px;
+
+					.icon-1 {
+						width: 102px !important;
+						height: 75px !important;
+						background-size: 102px 75px;
+						background-repeat: no-repeat;
+						top: -45px !important;
+						right: -42px !important;
+					}
+
+					.icon-2 {
+						width: 61px !important;
+						height: 75px !important;
+						background-size: 61px 75px !important;
+						background-repeat: no-repeat !important;
+						top: 17px !important;
+						background-image: url('../images/hero_sticker_ipadair__bk6ffplndvte_small_2x.png') !important;
+					}
+				}
+
+				.imessage-2 {
+					width: 210px;
+				}
+
+				.imessage-3 {
+					width: 215px;
+				}
+			}
+		}
+	}
+
+	.imessage-wrapper {
+		.button {
+			z-index: 12;
+			font-size: 17px;
+			line-height: 1.17648;
+			font-weight: 400;
+			letter-spacing: -.022em;
+			border-style: solid;
+			border-width: 1px;
+			min-width: 28px;
+			padding-left: 21px;
+			padding-right: 21px;
+			padding-top: 11px;
+			padding-bottom: 11px;
+			position: absolute;
+			bottom: -90px;
+			border-radius: 980px;
+			border-color: #007aff;
+			color: #007aff;
+
+			&:hover {
+				background-color: #007aff;
+				color: white;
+			}
+		}
+	}
+
+	.module-image {
+		background-image: url('../images/homepage-section-collection-module.png');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 100%;
+	}
+}
