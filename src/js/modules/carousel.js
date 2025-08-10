@@ -1,15 +1,21 @@
-// Multi-Carousel functionality - Simplified version
+// Multi-Carousel functionality with auto-run and move slide features
 export function initMultiCarousel() {
     // Configuration - dynamic based on screen size
     const totalItems = document.querySelectorAll(
         ".multi-carousel-item:not(.clone)"
     ).length;
     const maxCenterWidth = 1280;
+    const autoAdvanceInterval = 5000; // 5 seconds between slides
 
     // DOM elements
     const carousel = document.getElementById("multiCarousel");
     const carouselInner = document.getElementById("carouselInner");
     const carouselIndicators = document.getElementById("carouselIndicators");
+
+    // Auto-advance variables
+    let autoAdvanceTimer = null;
+    let isPaused = false;
+    let autoRunEnabled = false; // Flag to control auto-run functionality
 
     // Function to calculate slide widths based on container width
     function calculateSlideWidths() {
@@ -71,6 +77,9 @@ export function initMultiCarousel() {
 
         // Update indicators
         updateIndicators();
+        
+        // Update mouse event listeners for the new center slide
+        handleCenterSlideMouseEvents();
     }
 
     // Function to update indicator states
@@ -124,6 +133,50 @@ export function initMultiCarousel() {
         );
     }
 
+    // Auto-advance functionality
+    function startAutoAdvance() {
+        if (!autoRunEnabled) return; // Don't start if auto-run is disabled
+        
+        if (autoAdvanceTimer) {
+            clearInterval(autoAdvanceTimer);
+        }
+        autoAdvanceTimer = setInterval(() => {
+            if (!isPaused && !isAnimating && autoRunEnabled) {
+                const nextIndex = ((position - 2 + 1) % totalItems);
+                goToSlide(nextIndex);
+            }
+        }, autoAdvanceInterval);
+    }
+
+    function stopAutoAdvance() {
+        if (autoAdvanceTimer) {
+            clearInterval(autoAdvanceTimer);
+            autoAdvanceTimer = null;
+        }
+    }
+
+    // Function to enable auto-run
+    function enableAutoRun() {
+        autoRunEnabled = true;
+        if (!autoAdvanceTimer && !isPaused) {
+            startAutoAdvance();
+        }
+    }
+
+    // Function to disable auto-run
+    function disableAutoRun() {
+        autoRunEnabled = false;
+        stopAutoAdvance();
+    }
+
+    function pauseAutoAdvance() {
+        isPaused = true;
+    }
+
+    function resumeAutoAdvance() {
+        isPaused = false;
+    }
+
     // Update carousel position visually
     let slideConfig = updateConfig();
     initializeClones();
@@ -174,6 +227,20 @@ export function initMultiCarousel() {
         updateCarouselPosition();
     }
 
+    // Function to go to next slide
+    function nextSlide() {
+        if (isAnimating) return;
+        const nextIndex = ((position - 2 + 1) % totalItems);
+        goToSlide(nextIndex);
+    }
+
+    // Function to go to previous slide
+    function prevSlide() {
+        if (isAnimating) return;
+        const prevIndex = ((position - 2 - 1 + totalItems) % totalItems);
+        goToSlide(prevIndex);
+    }
+
     // Preload images and then initialize carousel properly
     preloadImages().then(() => {
         // Set initial position without animation
@@ -184,6 +251,12 @@ export function initMultiCarousel() {
         setTimeout(() => {
             carouselInner.classList.add("initialized");
         }, 50);
+
+        // Start auto-advance
+        startAutoAdvance();
+        
+        // Set up initial mouse event listeners for center slide
+        handleCenterSlideMouseEvents();
     });
 
     carouselInner.addEventListener("transitionend", function (event) {
@@ -214,6 +287,8 @@ export function initMultiCarousel() {
             void carouselInner.offsetWidth;
             updateCenterItem();
         }
+
+
     });
 
     // Add click event listeners to indicators
@@ -225,6 +300,34 @@ export function initMultiCarousel() {
             }
         });
     }
+
+
+
+    // Function to handle mouse events on center slide only
+    function handleCenterSlideMouseEvents() {
+        // Remove any existing event listeners from the carousel container
+        carousel.removeEventListener("mouseenter", pauseAutoAdvance);
+        carousel.removeEventListener("mouseleave", resumeAutoAdvance);
+        
+        // Remove event listeners from all slides to clean up
+        const allItems = document.querySelectorAll(".multi-carousel-item, .clone");
+        allItems.forEach((item) => {
+            item.removeEventListener("mouseenter", pauseAutoAdvance);
+            item.removeEventListener("mouseleave", resumeAutoAdvance);
+        });
+        
+        // Get the current center slide
+        const centerItem = document.querySelector(".multi-carousel-item.center, .clone.center");
+        if (centerItem) {
+            // Add event listeners to the center slide only
+            centerItem.addEventListener("mouseenter", pauseAutoAdvance);
+            centerItem.addEventListener("mouseleave", resumeAutoAdvance);
+        }
+    }
+
+    // Touch events for mobile (keep on carousel container for better mobile experience)
+    carousel.addEventListener("touchstart", pauseAutoAdvance);
+    carousel.addEventListener("touchend", resumeAutoAdvance);
 
     // Keyboard navigation
     document.addEventListener("keydown", function (e) {
@@ -238,13 +341,11 @@ export function initMultiCarousel() {
         switch (e.key) {
             case "ArrowLeft":
                 e.preventDefault();
-                const prevIndex = ((position - 2 - 1 + totalItems) % totalItems);
-                goToSlide(prevIndex);
+                prevSlide();
                 break;
             case "ArrowRight":
                 e.preventDefault();
-                const nextIndex = ((position - 2 + 1) % totalItems);
-                goToSlide(nextIndex);
+                nextSlide();
                 break;
         }
     });
@@ -255,4 +356,26 @@ export function initMultiCarousel() {
         setCarouselHeight();
         updateCarouselPosition(false);
     });
+
+    // Cleanup function
+    function cleanup() {
+        stopAutoAdvance();
+        carousel.removeEventListener("mouseenter", pauseAutoAdvance);
+        carousel.removeEventListener("mouseleave", resumeAutoAdvance);
+        carousel.removeEventListener("touchstart", pauseAutoAdvance);
+        carousel.removeEventListener("touchend", resumeAutoAdvance);
+    }
+
+    // Expose functions for external use
+    window.carouselControls = {
+        next: nextSlide,
+        prev: prevSlide,
+        goTo: goToSlide,
+        pause: pauseAutoAdvance,
+        resume: resumeAutoAdvance,
+        enableAutoRun: enableAutoRun,
+        disableAutoRun: disableAutoRun,
+        isAutoRunEnabled: () => autoRunEnabled,
+        cleanup: cleanup
+    };
 }
