@@ -245,7 +245,7 @@ body {
 
               .ai-gradient {
                 @include gradient-text(linear-gradient(94deg, #0090F7, #BA62FC, #F2416B, #F55600));
-                font-size: $macbook-gradient-text-size;
+                font-size: 21px;
                 font-weight: 500;
               }
             }
@@ -756,36 +756,35 @@ body {
     // =============================================================================
     // RESPONSIVE DESIGN
     // =============================================================================
+  }
+  @include responsive(768px) {
+    .module-content {
+      padding: 0;
+    }
 
-    @include responsive(768px) {
-      .module-content {
-        padding: 0;
-      }
+    .showcase-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
 
-      .showcase-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        width: 100%;
-      }
+    .showcase-item {
+      width: 100%;
+      min-width: 100%;
+    }
 
-      .showcase-item {
-        width: 100%;
-        min-width: 100%;
-      }
+    .showcase-title {
+      font-size: 21px;
+    }
 
-      .showcase-title {
-        font-size: 21px;
-      }
+    .showcase-description {
+      font-size: 15px;
+    }
 
-      .showcase-description {
-        font-size: 15px;
-      }
-
-      .showcase-links {
-        gap: 8px;
-        display: flex;
-        align-items: center;
-      }
+    .showcase-links {
+      gap: 8px;
+      display: flex;
+      align-items: center;
     }
   }
 }
