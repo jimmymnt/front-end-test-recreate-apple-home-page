@@ -57,7 +57,7 @@ front-end-test-assignment/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/jimmymnt/front-end-test-recreate-apple-home-page.git
    cd front-end-test-recreate-apple-home-page
    ```
 
@@ -70,6 +70,7 @@ front-end-test-assignment/
    ```bash
    npm run dev
    ```
+   And the project will be run at `http://localhost:9000`
 
 4. **Build for production**
    ```bash
